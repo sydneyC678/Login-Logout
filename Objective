@@ -74,12 +74,3 @@ In home.html -> create the  3 buttons
 
 #The rest you've implemented
 
-15. Creating superuser
--> python manage.py createsuperuser
-user: sydneycampbell
-email: sydcampbell@hotmail.com
-password: Campbell4
-
-to access go to the server and add admin 
--> http://127.0.0.1:8000/admin
-Log in
