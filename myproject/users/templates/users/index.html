@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SheSpeaksTwenties</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/users/main.css' %}" />
+    <link rel="stylesheet" href="{% static '/users/swiper-bundle.min.css'%}" />
+    <!-- Remix icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper.js styles -->
+  </head>
+
+  <body>
+    <!-- Header-->
+    <header class="header" id="header">
+      <nav class="navbar container">
+        <a href="index.html">
+          <h2 class="logo">SheSpeaksTwenties</h2>
+        </a>
+        <div class="menu" id="menu">
+          <ul class="list">
+            <li class="list-item">
+              <a href="" class="list-link current">Home</a>
+            </li>
+            <li class="list-item">
+              <a href="#" class="list-link">Makeup</a>
+            </li>
+            <li class="list-item">
+              <a href="#" class="list-link">Health</a>
+            </li>
+            <li class="list-item">
+              <a href="#" class="list-link">Beauty</a>
+            </li>
+            <li class="list-item">
+              <a href="#" class="list-link">Relationships</a>
+            </li>
+            <li class="list-item">
+              {% if user.is_authenticated%}
+              <a href="{% url 'profile' %}" class="list-link">Post</a>
+              {% endif %}
+            </li>
+            <li class="list-item screen-lg-hidden">
+              {% if user.is_authenticated%}
+              <a href="#" class="list-link">View Profile</a>
+              <a href="/signout"
+                ><button type="button" class="list-link">
+                  <span>Logout</span>
+                </button></a
+              >
+
+              {% else %}
+
+              <a href="/signup"
+                ><button type="button" class="list-link">
+                  Create Account
+                </button></a
+              >
+
+              <a href="/signin"
+                ><button
+                  type="button"
+                  class="list-link"
+                  style="text-align: center"
+                >
+                  Login
+                </button></a
+              >
+
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+        <div class="list list-right">
+          <button class="btn place-items-center" id="theme-toggle-btn">
+            <i class="ri-sun-line sun-icon"></i>
+            <i class="ri-moon-line moon-icon"></i>
+          </button>
+          <button class="btn place-items-center" id="search-icon">
+            <i class="ri-search-line"></i>
+          </button>
+          <!--WIll only show when on small screen-->
+          <button
+            class="btn place-items-center screen-lg-hidden menu-toggle-icon"
+            id="menu-toggle-icon"
+          >
+            <i class="ri-menu-3-line open-menu-icon"></i>
+            <i class="ri-close-line close-menu-icon"></i>
+          </button>
+          {% if user.is_authenticated%}
+          <a href="/profile" class="list-link screen-sm-hidden">View Profile</a>
+          <a href="/signout"
+            ><button type="button" class="list-link screen-sm-hidden">
+              Logout
+            </button></a
+          >
+          {% else %}
+          <div>
+            <a href="/signup" class="list-link screen-sm-hidden"
+              >Create Account</a
+            >
+          </div>
+          <div>
+            <a href="/signin" class="list-link screen-sm-hidden">Login</a>
+          </div>
+
+          {% endif %}
+        </div>
+      </nav>
+    </header>
+    <!-- Search-->
+    <div class="search-form-container container" id="search-form-container">
+      <div class="form-container-inner">
+        <form action="" class="form">
+          <input type="text" class="form-input" placeholder="Search" /><button
+            class="btn form-btn"
+            type="submit"
+          >
+            <i class="ri-search-line"></i>
+          </button>
+        </form>
+        <span class="form-note">Or press ESC to close</span>
+      </div>
+      <button class="btn form-close-btn place-items-center" id="form-close-btn">
+        <i class="ri-close-line"></i>
+      </button>
+    </div>
+    <!--Feautured articles-->
+    <section class="featured-articles section section-header-offset">
+      <div class="featured-articles-container container d-grid">
+        <div class="featured-content d-grid">
+          <div class="headline-banner">
+            {% if user.is_authenticated%}
+            <p class="welcome-banner-message">
+              Welcome to SheSpeaksTwenties {{fname}} !
+            </p>
+
+            {% else %}
+            <h3 class="headline fancy-border">
+              <span class="place-items-center">Get In On It</span>
+            </h3>
+
+            <span class="headline-description"
+              >Living and Thriving in Our Twenties Together..</span
+            >
+            {% endif %}
+          </div>
+
+          <a href="/post" class="article featured-article featured-article-1">
+            <img
+              src="{% static '/users/blog1.jpeg' %}"
+              alt=""
+              class="article-image"
+            />
+            <span class="article-category">Relationships</span>
+
+            <div class="article-data-container">
+              <div class="article-data">
+                <span>January 3rd, 2024</span>
+                <span class="article-data-spacer"></span>
+                <span>7 Min read</span>
+              </div>
+
+              <h3 class="title article-title">How to maintain friendships?</h3>
+            </div>
+          </a>
+
+          <a href="/post" class="article featured-article featured-article-2">
+            <img
+              src="{% static 'users/blog2.webp' %}"
+              alt=""
+              class="article-image"
+            />
+            <span class="article-category">Makeup</span>
+
+            <div class="article-data-container">
+              <div class="article-data">
+                <span>January 3rd, 2024</span>
+                <span class="article-data-spacer"></span>
+                <span>5 Min read</span>
+              </div>
+
+              <h3 class="title article-title">Best Makeup Brands 2023</h3>
+            </div>
+          </a>
+
+          <a href="/post" class="article featured-article featured-article-3">
+            <img
+              src="{% static 'users/women-health.avif' %}"
+              alt=""
+              class="article-image"
+            />
+            <span class="article-category">Health</span>
+
+            <div class="article-data-container">
+              <div class="article-data">
+                <span>Dec 22nd, 2023</span>
+                <span class="article-data-spacer"></span>
+                <span>6 Min read</span>
+              </div>
+
+              <h3 class="title article-title">What is strength training?</h3>
+            </div>
+          </a>
+        </div>
+        <!--End of main featured content-->
+        <!--Sidebar -->
+        <div class="sidebar d-grid">
+          <h3 class="title featured-content-title">Trending Posts</h3>
+
+          <a href="#" class="trending-news-box">
+            <div class="trending-news-img-box">
+              <span class="trending-number place-items-center">01</span>
+              <img
+                src="{% static 'users/b1.webp' %}"
+                alt=""
+                class="article-image"
+              />
+            </div>
+
+            <div class="trending-news-data">
+              <div class="article-data">
+                <span>4 Oct 2023</span>
+                <span class="article-data-spacer"></span>
+                <span>3 Min read</span>
+              </div>
+
+              <h3 class="title article-title">Easy Blueberry Pancakes</h3>
+            </div>
+          </a>
+
+          <a href="#" class="trending-news-box">
+            <div class="trending-news-img-box">
+              <span class="trending-number place-items-center">02</span>
+              <img
+                src="{% static 'users/b2.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+            </div>
+
+            <div class="trending-news-data">
+              <div class="article-data">
+                <span>1 Jan 2024</span>
+                <span class="article-data-spacer"></span>
+                <span>3 Min read</span>
+              </div>
+
+              <h3 class="title article-title">Easy University Meals</h3>
+            </div>
+          </a>
+
+          <a href="#" class="trending-news-box">
+            <div class="trending-news-img-box">
+              <span class="trending-number place-items-center">03</span>
+              <img
+                src="{% static 'users/b4.webp' %}"
+                alt=""
+                class="article-image"
+              />
+            </div>
+
+            <div class="trending-news-data">
+              <div class="article-data">
+                <span>6 Jan 2024</span>
+                <span class="article-data-spacer"></span>
+                <span>6 Min read</span>
+              </div>
+
+              <h3 class="title article-title">The Trip of My Life</h3>
+            </div>
+          </a>
+
+          <a href="#" class="trending-news-box">
+            <div class="trending-news-img-box">
+              <span class="trending-number place-items-center">04</span>
+              <img
+                src="{% static 'users/fight.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+            </div>
+
+            <div class="trending-news-data">
+              <div class="article-data">
+                <span>23 Dec 2023</span>
+                <span class="article-data-spacer"></span>
+                <span>3 Min read</span>
+              </div>
+
+              <h3 class="title article-title">We Broke Up</h3>
+            </div>
+          </a>
+
+          <a href="#" class="trending-news-box">
+            <div class="trending-news-img-box">
+              <span class="trending-number place-items-center">05</span>
+              <img
+                src="{% static 'users/travel.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+            </div>
+
+            <div class="trending-news-data">
+              <div class="article-data">
+                <span>21 November 2023</span>
+                <span class="article-data-spacer"></span>
+                <span>3 Min read</span>
+              </div>
+
+              <h3 class="title article-title">Why I Love to Travel</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!--Quick Read-->
+    <section class="quick-read section">
+      <div class="container">
+        <h2 class="title section-title" data-name="Quick read">Quick Read</h2>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <!--Slides-->
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/discover.avif' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">
+                  How to maintain friendships?
+                </h3>
+              </div>
+            </a>
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/b5.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">
+                  How to maintain friendships?
+                </h3>
+              </div>
+            </a>
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/women-health.avif' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">Health Advice</h3>
+              </div>
+            </a>
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/smile.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">
+                  How to maintain friendships?
+                </h3>
+              </div>
+            </a>
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/yoga.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">Yoga Lesson</h3>
+              </div>
+            </a>
+            <a href="#" class="article swiper-slide">
+              <img
+                src="{% static 'users/b6.jpeg' %}"
+                alt=""
+                class="article-image"
+              />
+              <div class="article-data-container">
+                <div class="article-data">
+                  <span>January 3rd, 2024</span>
+                  <span class="article-data-spacer"></span>
+                  <span>7 min read</span>
+                </div>
+                <h3 class="title article-title">How I Treated My Acne</h3>
+              </div>
+            </a>
+          </div>
+          <!--Navigation Buttons-->
+          <div class="swiper-button-prev swiper-controls"></div>
+          <div class="swiper-button-next swiper-controls"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <!--Newsletter-->
+    <section class="newsletter section">
+      <div class="container">
+        <h2 class="title section-title" data-name="Newsletter">Newsletter</h2>
+        <div class="form-container-inner">
+          <h6 class="title-newsletter-title">Subscribe to SheSpeaksTwenties</h6>
+          <p class="newsletter-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <div class="form form">
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your email"
+            />
+            <button class="btn form-btn" type="submit">
+              <i class="ri-mail-send-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Footer-->
+    <div class="footer section">
+      <div class="footer-container container d-gri">
+        <div class="company-data">
+          <div class="category-list-footer">
+            <h6 class="title footer-title">Categories</h6>
+            <ul class="list footer-list">
+              <li class="list-item">
+                <a href="" class="list-link">Makeup</a>
+              </li>
+              <li class="list-item">
+                <a href="" class="list-link">Health</a>
+              </li>
+              <li class="list-item">
+                <a href="" class="list-link">Beauty</a>
+              </li>
+              <li class="list-item">
+                <a href="" class="list-link">Relationships</a>
+              </li>
+            </ul>
+          </div>
+          <a href="index.html">
+            <h2 class="logo">SheSpeaksTwenties</h2>
+          </a>
+          <p class="company-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+          <ul class="list social-media">
+            <li class="list-item">
+              <a href="" class="list-link">
+                <i class="ri-instagram-line"></i>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="" class="list-link">
+                <i class="ri-twitter-line"></i>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="" class="list-link">
+                <i class="ri-facebook-circle-line"></i>
+              </a>
+            </li>
+          </ul>
+          <span class="copyright-notice"
+            >&copy; 2024 SheSpeaksTwenties. All rights reserved</span
+          >
+        </div>
+      </div>
+    </div>
+    {% load static %}
+    <script src="{% static 'users/swiper-bundle.min.js'%}"></script>
+    <script src="{% static '/users/main.js' %}"></script>
+  </body>
+</html>

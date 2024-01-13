@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.body {
+  background-image: linear-gradient(315deg, #e96196 0%, #ffffff 74%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  max-width: 50%;
+  align-items: flex-start;
+  display: flex;
+  gap: 50px;
+  padding: 50px 150px;
+  border-radius: 30px;
+  border-color: #e9619532;
+  border-width: 10px;
+  border-style: double;
+  box-shadow: 0 0 2px 7px rgba(141, 6, 58, 0.521);
+}
+.right-form {
+  flex-grow: 0;
+  width: 100%;
+  height: 100%;
+}
+.right-form {
+  flex-grow: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.right-form h2 {
+  font-size: 40px;
+  color: #e96196;
+  text-align: center;
+}
+.form-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-bottom: 10px;
+}
+.form-elements input {
+  height: 30px;
+  width: 250px;
+  background-color: #e9619500;
+  border-style: none;
+  border-bottom: 1px solid #e96196;
+  font-size: medium;
+}
+.terms {
+  color: rgba(34, 32, 32, 0.752);
+  text-align: center;
+}
+.small-pink-bold {
+  font-weight: 700;
+  color: #e71a69;
+}
+.medium-pink-bold {
+  font-weight: 700;
+  color: #e71a69;
+  font-size: large;
+}
+
+.signup-btn {
+  width: 250px;
+  height: 60px;
+  margin: 20px;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: #e71a697c;
+  color: #ffffff;
+  border-style: none;
+  box-shadow: 2px 3px #4c0a23ae;
+  transition: 0.3s;
+}
+.signup-btn:hover {
+  background-color: #ed4b89;
+}
+
+.form-elements input:focus {
+  outline: none;
+  /* Add alternative styling for focus state to maintain accessibility */
+  box-shadow: 0 0 3px 2px rgba(233, 97, 150, 0.5); /* Example shadow */
+  border-color: rgba(170, 97, 233, 0.5);
+}
+
+.input-control.succes input {
+  border-color: rgba(170, 97, 233, 0.5);
+}
+.input-control.error input {
+  border-color: rgba(210, 15, 15, 0.5);
+}
+.input-control .error {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #e71a69;
+}
+@media screen and (min-width: 768px) {
+  .right-form h2 {
+    text-align: left;
+  }
+}

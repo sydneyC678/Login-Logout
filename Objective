@@ -1,0 +1,85 @@
+Create a login/logout/signup registration with a database using Django
+
+1. Create a main folder -> "Loging:Logout" #main directory that contains my project
+2. Virtual environment
+-> python -m venv "name of virtual environement" #to isolate the dependencies of my project, so that they don't interfere with other projects
+-> source venv/bin/activate
+3. Install Django in venv
+-> pip install django
+-> pip install django_cripy_forms #adds additional styling for forms
+4. Create project
+-> django-admin startproject "name of project" (in this case = myproject)
+5. Create app
+-> cd myproject
+-> python manage.py startapp "name of app" (in this case = users) #handles user functions -> login, logout, signup
+
+6. install the created app in the project
+-> settings.py in myproject
+-> Under INSTALLED_APPS add: 'users.apps.UsersConfig',
+    'crispy_forms',
+
+7. import http response -> views.py in the app
+from django.http import HttpResponse
+def home(request):
+    return HttpResponse("<h1>Home</h1>")
+#views handle what my website shows when someone visits a specific page
+#so i'm creating a view for the homepage of my website
+#so, right now my method is defined as such: when someone visits my homepage, show them a heading that says "Home"
+
+8. add "include" in urls.py and add new path
+from django.urls import path, include
+
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path('', include('users.urls'))
+]
+#urlpatterms is like a list of directions for different parts of my website
+#the first path says: if someone goes to "/admin/" in my website's address, they'll see the django admin panel
+#the second path says: if someone goes to my website's main address, it tells the website to look in the "users" app 
+
+9. Copy #8 
+and create a new python file in the app called urls.py and paste it
+Only keept this:
+
+from django.urls import path
+#import views
+from . import views
+
+urlpatterns = [
+    path('', views.home)
+]
+#seting up directions within a specific part of my website
+#from . import views gets the instructions(views) from a file called views.py in the same place
+#if someone goes to the main address of the "users" section, this says to show what's in the 'home' part of the views.py
+
+10.  
+-> cd myproject
+#run a development server
+-> python manage.py runserver
+
+11. in urls.py in app, create a name 
+urlpatterns = [
+   path('', views.home, name ='home')
+]
+
+12. Use the advanced way for http response in views.py
+def home(request):
+    return render(request, 'users/home.html')
+
+13. create folder in users app called templates and then create a folder within the templates folder called users and create a file called "home.html", "signup.html", "login/html"
+
+In home.html -> create the  3 buttons
+
+14. setttings.py -> TEMPLATES -> 'DIRS': ["templates"],
+
+#The rest you've implemented
+
+15. Creating superuser
+-> python manage.py createsuperuser
+user: sydneycampbell
+email: sydcampbell@hotmail.com
+password: Campbell4
+
+to access go to the server and add admin 
+-> http://127.0.0.1:8000/admin
+Log in
