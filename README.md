@@ -24,3 +24,14 @@
 
 🚀 Exciting developments are underway! Soon, the dynamic "Post" section will empower registered users to contribute their unique perspectives. This exclusive feature ensures that only logged-in users can add their own posts, fostering a sense of community and connection.
 
+##Demo
+![Screen Shot 2024-01-14 at 5 15 59 PM](https://github.com/sydneyC678/SheSpeaksTwenties-Website/assets/121634300/ba973a4c-1d86-4585-b876-068631de1e5c)
+
+![Screen Shot 2024-01-14 at 5 16 07 PM](https://github.com/sydneyC678/SheSpeaksTwenties-Website/assets/121634300/d74631d2-05d4-4359-8f65-cefa1eb9d720)
+![Screen Shot 2024-01-14 at 5 17 51 PM](https://github.com/sydneyC678/SheSpeaksTwenties-Website/assets/121634300/e88c2d90-6aa9-4a25-b7c0-a2df4a901b55)
+
+![Screen Shot 2024-01-14 at 5 16 42 PM](https://github.com/sydneyC678/SheSpeaksTwenties-Website/assets/121634300/9489d2a1-2922-4169-9644-b2a7bcdcee11)
+
+
+
+
